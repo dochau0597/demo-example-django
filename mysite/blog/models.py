@@ -13,7 +13,7 @@ class PublishedManager(models.Manager):
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
-        ('publish', 'Publish'),
+        ('published', 'Published'),
     )
     title = models.CharField(max_length=250)
     slug = models.SlugField(
@@ -39,6 +39,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    # xây dựng url theo tên của chúng và truyền tham số tùy chọn
     def get_absolute_url(self):
         return reverse('blog:post_detail',
                        args=[
